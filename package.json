@@ -7,8 +7,15 @@
     "email": "liber_2000@163.com"
   },
   "scripts": {
-    "test": "eslint index.js && nyc ava test/index.js ",
-    "coverage": "nyc report --reporter=html"
+    "clean": "rm -rf .nyc_output coverage dist",
+    "build": "npm run clean && babel lib  -d dist ",
+    "test": "node_modules/.bin/nyc node_modules/.bin/ava -v test",
+    "test-cov": "npm run test && npm run analyze-coverage && npm run check-coverage",
+    "analyze-coverage": "node_modules/.bin/nyc report --reporter=html",
+    "check-coverage": "node_modules/.bin/nyc check-coverage --lines 90 --functions 90 --branches 90",
+    "test-travis": "npm run test && node_modules/.bin/nyc report --reporter=text-lcov > coverage/lcov.info && npm run check-coverage",
+    "lint": "node_modules/.bin/eslint .",
+    "prepublish": "npm run build"
   },
   "ava": {
     "require": [
@@ -21,15 +28,32 @@
       "email": "liber_2000@163.com"
     }
   ],
-  "main": "index.js",
+  "main": "dist/index.js",
   "dependencies": {
     "debug": "^2.6.1",
-    "think-helper": "^1.0.0"
+    "think-helper": "^1.0.0",
+    "debug": "^2.3.2",
+    "lodash": "^4.17.2",
+    "mustache": "^2.3.0",
+    "tv4-x": "^1.2.8",
+    "ajv": "^4.10.0",
+    "url-join": "^1.1.0"
   },
   "devDependencies": {
     "ava": "^0.18.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-plugin-transform-async-generator-functions": "^6.17.0",
+    "babel-plugin-transform-async-to-generator": "^6.16.0",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
+    "babel-plugin-transform-es2015-block-scoped-functions": "^6.8.0",
+    "babel-plugin-transform-es2015-block-scoping": "^6.18.0",
+    "babel-plugin-transform-es2015-classes": "^6.18.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.19.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "babel-plugin-transform-es2015-parameters": "^6.18.0",
     "coveralls": "^2.12.0",
     "eslint": "2.8.0",
     "mkdirp": "^0.5.1",
@@ -37,7 +61,14 @@
     "nyc": "^7.0.0",
     "rimraf": "^2.6.1"
   },
-  "keywords": [],
+  "keywords": [
+    "thinkjs",
+    "swagger",
+    "controller",
+    "openapi",
+    "restful",
+    "api"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/libery/think-swagger-controller"

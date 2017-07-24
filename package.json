@@ -1,7 +1,7 @@
 {
   "name": "think-swagger-controller",
   "description": "think swagger controller",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "author": {
     "name": "liber",
     "email": "liber_2000@163.com"
@@ -30,9 +30,8 @@
   ],
   "main": "dist/index.js",
   "dependencies": {
-    "debug": "^2.6.1",
-    "think-helper": "^1.0.0",
     "debug": "^2.3.2",
+    "think-helper": "^1.0.0",
     "lodash": "^4.17.2",
     "mustache": "^2.3.0",
     "tv4-x": "^1.2.8",
@@ -41,10 +40,9 @@
   },
   "devDependencies": {
     "ava": "^0.18.2",
-    "babel-core": "^6.22.1",
+    "babel-core": "^6.18.2",
     "babel-eslint": "^7.1.1",
     "babel-cli": "^6.18.0",
-    "babel-core": "^6.18.2",
     "babel-plugin-transform-async-generator-functions": "^6.17.0",
     "babel-plugin-transform-async-to-generator": "^6.16.0",
     "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
